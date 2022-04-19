@@ -2,9 +2,19 @@ namespace QuantumHello {
 
     open Microsoft.Quantum.Canon;
     open Microsoft.Quantum.Intrinsic;
+    open Microsoft.Quantum.Math;
+    open Microsoft.Quantum.Diagnostics;
+    open Microsoft.Quantum.Measurement;
     
     @EntryPoint()
-    operation SayHello() : Unit {
-        Message("Hello quantum world!");
+    operation GenerateSpecificState(alpha: Double) : Result {
+        use q = Qubit();
+        Ry(2.0 * ArcCos(Sqrt(alpha)), q);
+        Message("The qubit is in the desired state.");
+        Message("");
+        DumpMachine();
+        Message("");
+        Message("Your skewed random bit is:");
+        return M(q);
     }
 }
