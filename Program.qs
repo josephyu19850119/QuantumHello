@@ -5,7 +5,7 @@ namespace QuantumHello {
     open Microsoft.Quantum.Diagnostics;
     open Microsoft.Quantum.Measurement;
     
-    @EntryPoint()
+    // @EntryPoint()
     operation TestInterference1() : Result {
         use q = Qubit();
         Message(" ");
@@ -25,5 +25,43 @@ namespace QuantumHello {
         Message(" ");
         Message("If we measure we always obtain 'Zero'.");
         return MResetZ(q);
+    }
+
+    // @EntryPoint()
+    operation TestInterference2() : Result {
+        use q = Qubit();
+        Message("At the beginning the qubit is in the state |0>.");
+        DumpMachine();
+        Message(" ");
+
+        X(q);
+        Message("After X(q):");
+        DumpMachine();
+        Message(" ");
+
+        H(q);
+        Message("After H(q):");
+        DumpMachine();
+
+        return M(q);
+    }
+
+    @EntryPoint()
+    operation TestInterference3() : Result {
+        use q = Qubit();
+        Message("At the beginning the qubit is in the state |0>.");
+        DumpMachine();
+        Message(" ");
+
+        Y(q);
+        Message("After Y(q):");
+        DumpMachine();
+        Message(" ");
+
+        H(q);
+        Message("After H(q):");
+        DumpMachine();
+
+        return M(q);
     }
 }
